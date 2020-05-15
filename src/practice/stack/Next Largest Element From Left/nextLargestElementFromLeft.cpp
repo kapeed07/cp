@@ -1,6 +1,6 @@
 /*
-* Problem: Nearest Greater to right || Next Largest Element
-* Learning Link: https://www.youtube.com/watch?v=NXOOYYwpbg4
+* Problem: Nearest Greater to left || Next Largest Element From Left
+* Learning Link: https://www.youtube.com/watch?v=T5s96ynzArg
 */
 
 #include <iostream>
@@ -37,13 +37,13 @@ vector<int> getVectorInput(int sizeOfInput)
   return input;
 }
 
-vector<int> getNextLargestElement(vector<int> &input)
+vector<int> getNextLargestElementFromLeft(vector<int> &input)
 {
   stack<int> stack;
   vector<int> result;
   int size = input.size();
 
-  for (int index = size - 1; index >= 0; index--)
+  for (int index = 0; index < size; index++)
   {
     if (stack.empty())
     {
@@ -71,8 +71,6 @@ vector<int> getNextLargestElement(vector<int> &input)
     stack.push(input[index]);
   }
 
-  reverse(result.begin(), result.end());
-
   return result;
 }
 
@@ -98,7 +96,7 @@ int main()
   {
     cin(sizeOfInput);
     input = getVectorInput(sizeOfInput);
-    result = getNextLargestElement(input);
+    result = getNextLargestElementFromLeft(input);
     printVectorInput(result);
   }
 
